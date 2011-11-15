@@ -1,0 +1,15 @@
+# Vim swap files.
+*.swp
+*.swo
+
+# Generated Cabal directories.
+cabal-dev
+dist
+
+# Generated files (object files and the like).
+*.a
+*.so
+*.exe
+*.o
+*.hi
+
