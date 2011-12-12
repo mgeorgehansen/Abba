@@ -8,7 +8,7 @@ Maintainer:          technopolitica@gmail.com
 Category:            Development
 Build-type:          Simple
 Extra-source-files:  README.txt
-Cabal-version:       >=1.2
+Cabal-version:       >=1.6
 
 source-repository head
   type:     git
@@ -16,5 +16,6 @@ source-repository head
 
 Library
   Exposed-modules:     Development.Abba
-  Build-depends:       base >4 && <5, containers -any, directory -any
+  Build-depends:       base >4 && <5, containers -any, directory -any,
+                       process -any
 
