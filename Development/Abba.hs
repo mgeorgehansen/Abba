@@ -36,6 +36,16 @@ data Rule = Rule {
   -- ^'Recipe' to build the targets from the dependencies, if any.
   }
 
+-- Define a simple method for showing a 'Rule' to make debugging easier.
+instance Show Rule where
+    show (Rule {targets, dependencies, recipe})
+        = printf "Rule {targets=%s, dependencies=%s, recipe=%s}"
+            (show targets) (show dependencies) shownRecipe
+      where
+        shownRecipe = case recipe of
+            Just _  -> "Just Recipe(..)"
+            Nothing -> "Nothing"
+
 -- 'Rule' equality is uniquely determined by its targets to prevent conflicts.
 instance Eq Rule where
     (Rule {targets=targetsA}) == (Rule {targets=targetsB})
