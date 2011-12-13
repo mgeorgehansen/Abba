@@ -13,8 +13,8 @@ main = do
     let
         cxxFlags = ["-std=c++0x"]
         
-        rules = Set.fromList [
-            Rule ["all"] ["foo"] Nothing
+        rules = Set.fromList
+          [ Rule ["all"] ["foo"] Nothing
           , Rule ["clean"] [] $ Just $ \_ _ -> do
                 clean "foo"
                 clean "foo.o"
@@ -26,11 +26,11 @@ main = do
           , Rule ["main.o"] ["main.cxx"] $ Just
                 $ buildCxxObject cxxFlags
           ]
-    initialTargets <- getArgs
-    let
-        (dependencyGraph, nodeMapper, vertexMapper)
+        
+        dependencyGraph
             = constructDependencyGraph rules
-    buildTargets dependencyGraph vertexMapper nodeMapper initialTargets
+    initialTargets <- getArgs
+    buildTargets rules dependencyGraph initialTargets
   where
     buildCxxExecutable cxxFlags targets dependencies
         = shell "g++"

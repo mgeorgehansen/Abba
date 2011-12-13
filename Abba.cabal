@@ -1,5 +1,5 @@
 Name:                Abba
-Version:             0.0.1
+Version:             0.1.0
 Synopsis:            A better build architecture
 License:             BSD3
 License-file:        LICENSE
@@ -15,7 +15,9 @@ source-repository head
   location: git://github.com/technopolitica/Abba.git
 
 Library
-  Exposed-modules:     Development.Abba
-  Build-depends:       base >4 && <5, containers -any, directory -any,
-                       process -any
+  Exposed-modules:     Development.Abba, Development.Abba.Core,
+                       Development.Abba.DependencyGraph, Development.Abba.Types
+  Build-depends:       base >4 && <5, haskell98 -any, containers -any,
+                       directory -any, process -any, fgl -any
+  Extensions:          NamedFieldPuns, ScopedTypeVariables, ParallelListComp
 
